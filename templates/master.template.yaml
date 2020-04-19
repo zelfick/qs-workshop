@@ -151,6 +151,8 @@ Resources:
           Fn::GetAtt:
           - VPCStack
           - Outputs.VPCCIDR
+
+#We add the outputs to the template
 Outputs:
   WebURL:
     Description: "The web server URL"
