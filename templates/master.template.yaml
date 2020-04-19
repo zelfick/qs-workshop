@@ -107,6 +107,7 @@ Resources:
         PublicSubnet1CIDR: !Ref PublicSubnet1CIDR
         PublicSubnet2CIDR: !Ref PublicSubnet2CIDR
         VPCCIDR: !Ref VPCCIDR
+# Add Workload as a nested stack to your Quick Start infraestructure
   WorkloadStack:
     DependsOn: VPCStack
     Type: AWS::CloudFormation::Stack
@@ -150,3 +151,10 @@ Resources:
           Fn::GetAtt:
           - VPCStack
           - Outputs.VPCCIDR
+Outputs:
+  WebURL:
+    Description: "The web server URL"
+    Value:
+      Fn::GetAtt:
+      - WorkloadStack
+      - Outputs.URL
